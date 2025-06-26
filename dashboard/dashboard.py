@@ -276,7 +276,7 @@ with tabs[0]:
 with tabs[1]:
     if not snapshot_df_f.empty:
         st.info("Total Inventory Over Time by Product: Track inventory trends and spot stockouts or surpluses.")
-        st.image('plot_total_inventory_by_product.png', caption='Total Inventory Over Time by Product', use_container_width=True)
+        st.image('graphs/plot_total_inventory_by_product.png', caption='Total Inventory Over Time by Product', use_container_width=True)
 
     if not low_inventory_df_f.empty:
         st.info("Low Inventory Analysis: Identify products at risk of stockout.")
@@ -314,7 +314,7 @@ with tabs[1]:
 # --- Forecast Accuracy Tab ---
 with tabs[2]:
     st.info("Forecast Accuracy Classification: See the distribution of accurate, underforecasted, and overforecasted cases.")
-    st.image('forecast_accuracy_classification_final.png', caption='Forecast Accuracy Classification', use_container_width=True)
+    st.image('graphs/forecast_accuracy_classification_final.png', caption='Forecast Accuracy Classification', use_container_width=True)
 
     if not forecast_sample_f.empty:
         st.info("Forecast Error % Over Time by Product: Track forecast error trends and spot persistent bias.")
