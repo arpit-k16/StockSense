@@ -7,10 +7,10 @@ from datetime import datetime
 from io import BytesIO
 
 # --- Download Helper Functions (must be defined before use) ---
-def fig_to_image_download(fig, filename):
-    buf = BytesIO()
-    fig.write_image(buf, format='png')
-    st.download_button('Download Chart', buf.getvalue(), file_name=filename, mime='image/png')
+# def fig_to_image_download(fig, filename):
+#     buf = BytesIO()
+#     fig.write_image(buf, format='png')
+#     st.download_button('Download Chart', buf.getvalue(), file_name=filename, mime='image/png')
 
 def df_to_csv_download(df, filename):
     csv = df.to_csv(index=False).encode('utf-8')
@@ -212,7 +212,8 @@ with tabs[0]:
         fig3.update_traces(texttemplate='%{text:.1f}', textposition='outside')
         fig3.update_layout(legend=dict(x=1.02, y=1, xanchor='left', yanchor='top'), xaxis_tickangle=45)
         st.plotly_chart(fig3, use_container_width=True, key='fig3')
-        fig_to_image_download(fig3, 'top_10_turnover.png')
+        # Image download disabled on Streamlit Cloud (Kaleido/Chrome not supported)
+        # fig_to_image_download(fig3, 'top_10_turnover.png')
         df_to_csv_download(top10, 'top_10_turnover.csv')
     if not turnover_df_f.empty:
         st.info("Bottom 10 SKUs by Inventory Turnover: Spot slow-moving or stagnant products that may need attention.")
@@ -222,7 +223,8 @@ with tabs[0]:
         fig5.update_traces(texttemplate='%{text:.1f}', textposition='outside')
         fig5.update_layout(legend=dict(x=1.02, y=1, xanchor='left', yanchor='top'), xaxis_tickangle=45)
         st.plotly_chart(fig5, use_container_width=True, key='fig5')
-        fig_to_image_download(fig5, 'bottom_10_turnover.png')
+        # Image download disabled on Streamlit Cloud (Kaleido/Chrome not supported)
+        # fig_to_image_download(fig5, 'bottom_10_turnover.png')
         df_to_csv_download(bottom10, 'bottom_10_turnover.csv')
     if not turnover_df_f.empty:
         st.info("Heatmap of Inventory Turnover by Store and Product: Alternative color scheme for turnover heatmap.")
@@ -240,7 +242,8 @@ with tabs[0]:
         fig8.update_layout(title='Heatmap of Inventory Turnover by Store and Product',
                           xaxis_title='Product ID', yaxis_title='Store ID')
         st.plotly_chart(fig8, use_container_width=True, key='fig8')
-        fig_to_image_download(fig8, 'heatmap_turnover_store_product.png')
+        # Image download disabled on Streamlit Cloud (Kaleido/Chrome not supported)
+        # fig_to_image_download(fig8, 'heatmap_turnover_store_product.png')
         df_to_csv_download(heatmap_data.reset_index(), 'heatmap_turnover_store_product.csv')
     if not turnover_df_f.empty:
         st.info("Top 10 SKUs by Inventory Turnover – Store S003: Fastest-moving products in Store S003.")
@@ -252,7 +255,8 @@ with tabs[0]:
         fig6b.update_traces(texttemplate='%{y:.1f}', textposition='outside')
         fig6b.update_layout(xaxis_tickangle=45)
         st.plotly_chart(fig6b, use_container_width=True, key='fig6b')
-        fig_to_image_download(fig6b, 'top_10_turnover_s003.png')
+        # Image download disabled on Streamlit Cloud (Kaleido/Chrome not supported)
+        # fig_to_image_download(fig6b, 'top_10_turnover_s003.png')
         df_to_csv_download(top10_s003, 'top_10_turnover_s003.csv')
     if not turnover_df_f.empty:
         st.info("Bottom 10 SKUs by Inventory Turnover – Store S003: Slowest-moving products in Store S003.")
@@ -264,7 +268,8 @@ with tabs[0]:
         fig7b.update_traces(texttemplate='%{y:.1f}', textposition='outside')
         fig7b.update_layout(xaxis_tickangle=45)
         st.plotly_chart(fig7b, use_container_width=True, key='fig7b')
-        fig_to_image_download(fig7b, 'bottom_10_turnover_s003.png')
+        # Image download disabled on Streamlit Cloud (Kaleido/Chrome not supported)
+        # fig_to_image_download(fig7b, 'bottom_10_turnover_s003.png')
         df_to_csv_download(bottom10_s003, 'bottom_10_turnover_s003.csv')
 
 # --- Inventory & Overstock Tab ---
@@ -288,7 +293,8 @@ with tabs[1]:
         fig2.update_traces(texttemplate='%{text:.1f}', textposition='outside')
         fig2.update_layout(showlegend=False, xaxis_tickangle=45, yaxis_showgrid=True)
         st.plotly_chart(fig2, use_container_width=True, key='fig2')
-        fig_to_image_download(fig2, 'low_inventory_analysis.png')
+        # Image download disabled on Streamlit Cloud (Kaleido/Chrome not supported)
+        # fig_to_image_download(fig2, 'low_inventory_analysis.png')
         df_to_csv_download(avg_inventory, 'low_inventory_analysis.csv')
 
     if not overstock_df_f.empty:
@@ -301,7 +307,8 @@ with tabs[1]:
                          color_discrete_map=color_map, symbol='inventory_health_flag')
         fig9.update_layout(legend=dict(x=1.02, y=1, xanchor='left', yanchor='top'), yaxis_showgrid=True)
         st.plotly_chart(fig9, use_container_width=True, key='fig9')
-        fig_to_image_download(fig9, 'overstock_scatter.png')
+        # Image download disabled on Streamlit Cloud (Kaleido/Chrome not supported)
+        # fig_to_image_download(fig9, 'overstock_scatter.png')
         df_to_csv_download(overstock_df_f, 'overstock_scatter.csv')
 
 # --- Forecast Accuracy Tab ---
@@ -320,7 +327,8 @@ with tabs[2]:
             fig11.add_hline(y=-10, line_dash='dash', line_color='red', annotation_text='-10% Threshold', annotation_position='bottom left')
             fig11.update_layout(legend=dict(x=1.02, y=1, xanchor='left', yanchor='top'), xaxis_tickangle=45)
             st.plotly_chart(fig11, use_container_width=True)
-            fig_to_image_download(fig11, 'forecast_error_trend_by_product_final.png')
+            # Image download disabled on Streamlit Cloud (Kaleido/Chrome not supported)
+            # fig_to_image_download(fig11, 'forecast_error_trend_by_product_final.png')
             df_to_csv_download(forecast_sample_f, 'forecast_error_trend_by_product_final.csv')
 
 # --- ML Model Insights Tab ---
