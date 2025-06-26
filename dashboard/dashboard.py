@@ -314,7 +314,7 @@ with tabs[1]:
 # --- Forecast Accuracy Tab ---
 with tabs[2]:
     st.info("Forecast Accuracy Classification: See the distribution of accurate, underforecasted, and overforecasted cases.")
-    st.image('dashboardgraphs/forecast_accuracy_classification_final.png', caption='Forecast Accuracy Classification', use_container_width=True)
+    st.image('dashboard/graphs/forecast_accuracy_classification_final.png', caption='Forecast Accuracy Classification', use_container_width=True)
 
     if not forecast_sample_f.empty:
         st.info("Forecast Error % Over Time by Product: Track forecast error trends and spot persistent bias.")
