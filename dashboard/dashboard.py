@@ -26,15 +26,15 @@ def load_csv(filename, **kwargs):
         st.error(f"Error loading {filename}: {e}")
         return pd.DataFrame()
 
-low_inventory_df = load_csv('Low Inventory.csv')
-overstock_df = load_csv('Overstock.csv')
-turnover_df = load_csv('Inventory Turnover Rate.csv')
-forecast_deviation_df = load_csv('Forecast Deviation.csv')
-snapshot_df = load_csv('Inventory Snapshot.csv')
+low_inventory_df = load_csv('dashboard/Low Inventory.csv')
+overstock_df = load_csv('dashboard/Overstock.csv')
+turnover_df = load_csv('dashboard/Inventory Turnover Rate.csv')
+forecast_deviation_df = load_csv('dashboard/Forecast Deviation.csv')
+snapshot_df = load_csv('dashboard/Inventory Snapshot.csv')
 
 # Forecast.csv is large, so read only needed columns
 try:
-    forecast_sample = pd.read_csv('Forecast.csv', nrows=5000, header=None)
+    forecast_sample = pd.read_csv('dashboard/Forecast.csv', nrows=5000, header=None)
     forecast_header = [
         'date', 'store_id', 'product_id', 'actual', 'forecast', 'error', 'accuracy_class',
         'price', 'discount', 'holiday_promotion', 'weather_condition', 'seasonality'
